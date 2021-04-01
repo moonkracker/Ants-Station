@@ -59,7 +59,7 @@ function formHostsForAnsible() {
 }
 
 function runPlaybook() {
-    $(ansible-playbook -i /home/pi/Ants-Station/hosts /home/pi/Ants-Station/playbook.yaml)
+    ansible-playbook -i /home/pi/Ants-Station/hosts /home/pi/Ants-Station/playbook.yaml
 }
 
 formHostsForAnsible

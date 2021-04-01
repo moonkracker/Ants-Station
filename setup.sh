@@ -12,7 +12,7 @@ echo
 echo "$(tput setaf 5)******  GPL3 LICENSE:  ******$(tput sgr 0)"
 echo
 
-echo 'All scripts/files in the ants repository are Copyright (C) 2021 Kononovich Maxim'
+echo 'All scripts/files in the Ants-Station repository are Copyright (C) 2021 Kononovich Maxim'
 echo
 echo "This program comes with ABSOLUTELY NO WARRANTY express or implied."
 echo "This is free software and you are welcome to redistribute it under certain conditions."
@@ -28,7 +28,7 @@ echo
 echo "$(tput setaf 2)****** Install all the required software ******$(tput sgr 0)"
 echo
 
-apt install dnsmasq hostapd ansible -y
+apt install dnsmasq hostapd sshpass ansible -y
 
 echo
 echo "$(tput setaf 1)****** Stop hostapd and dnsmasq services ******$(tput sgr 0)"
