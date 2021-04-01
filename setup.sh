@@ -27,7 +27,7 @@ echo
 echo "$(tput setaf 2)****** Install all the required software ******$(tput sgr 0)"
 echo
 
-apt install dnsmasq hostapd ansible
+apt install dnsmasq hostapd ansible -y
 
 echo
 echo "$(tput setaf 1)****** Stop hostapd and dnsmasq services ******$(tput sgr 0)"
