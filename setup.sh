@@ -1,6 +1,7 @@
 #!/bin/bash
 
 source "variables.sh"
+source "functions.sh"
 
 if ! [ $(id -u) = 0 ]; then
     echo -e "\e[91mThis script must be run as root\e[39m"
@@ -100,7 +101,7 @@ sh -c "iptables-save > /etc/iptables.ipv4.nat"
 mv /etc/rc.local /etc/rc.local.bak
 mv rc.local /etc/rc.local
 
-$PREFIX=/dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 6 | head -n 1
+PREFIX=$(randomiseStr 6)
 echo
 echo "$(tput setaf 6)****** Set hostname as $HOSTNAME-$PREFIX ******$(tput sgr 0)"
 echo
@@ -111,8 +112,7 @@ echo "$(tput setaf 1)****** Set add cron job ******$(tput sgr 0)"
 echo
 
 chmod +x /home/pi/get_clients.sh
-(crontab -l ; echo "*/10 * * * * /home/pi/get_clients.sh") | sort - | uniq - | crontab - 
-
+(crontab -l ; echo "*/10 * * * * /home/pi/Ants-Station/get_clients.sh") | sort - | uniq - | crontab - 
 
 echo
 echo "$(tput setaf 1)****** Reboot system in 5 seconds ******$(tput sgr 0)"
