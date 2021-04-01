@@ -23,7 +23,7 @@ read -p "Press ENTER to accept GPL v3 license terms to continue or terminate thi
 echo
 echo "$(tput setaf 5)****** AP Configuration: ******$(tput sgr 0)"
 echo
-
+rfkill unblock 0
 echo
 echo "$(tput setaf 2)****** Install all the required software ******$(tput sgr 0)"
 echo
@@ -81,7 +81,7 @@ sudo systemctl unmask hostapd
 sudo systemctl enable hostapd
 sudo systemctl start hostapd
 
-sed -i "s/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g" /tc/sysctl.conf
+sed -i "s/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g" /etc/sysctl.conf
 
 echo
 echo "$(tput setaf 4)****** Configure routing from $ROUTEINTERFACE to $INTERFACE ******$(tput sgr 0)"
@@ -91,7 +91,7 @@ cat << EOF >> /etc/sysctl.conf
 net.ipv6.conf.all.disable_ipv6=1
 net.ipv6.conf.default.disable_ipv6=1
 net.ipv6.conf.lo.disable_ipv6=1
-net.ipv6.conf.eth0.disable_ipv6 = 1
+net.ipv6.conf.eth0.disable_ipv6=1
 EOF
 
 iptables -t nat -A  POSTROUTING -o $ROUTEINTERFACE -j MASQUERADE
@@ -111,8 +111,8 @@ echo
 echo "$(tput setaf 1)****** Set add cron job ******$(tput sgr 0)"
 echo
 
-chmod +x /home/pi/get_clients.sh
-(crontab -l ; echo "*/10 * * * * /home/pi/Ants-Station/get_clients.sh") | sort - | uniq - | crontab - 
+chmod +x /home/pi/Ants-Station/get_clients.sh
+runuser -l pi -c '(crontab -l ; echo "*/10 * * * * /home/pi/Ants-Station/get_clients.sh") | sort - | uniq - | crontab - '
 
 echo
 echo "$(tput setaf 1)****** Reboot system in 5 seconds ******$(tput sgr 0)"
