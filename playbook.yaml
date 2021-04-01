@@ -1,0 +1,18 @@
+---
+- name: 'fetch data from ants'
+  hosts: 'all'
+  vars:
+    time: "{{ lookup('pipe','date -d \"+8 hours\" +%Y/%m-%b/%d-%a') }}"
+  tasks:
+  - name: use find to get the files list which you want to copy/fetch
+    find: 
+      paths: /home/pi/Desktop
+    register: file_2_fetch
+
+  - name: use fetch to get the files
+    fetch:
+      src: "{{ item.path }}"
+      dest: /home/pi/ants/{{ inventory_hostname }}/{{ time }}/
+      flat: yes
+    with_items: "{{ file_2_fetch.files }}"
+...
