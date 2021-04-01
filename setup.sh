@@ -86,6 +86,13 @@ echo
 echo "$(tput setaf 4)****** Configure routing from $ROUTEINTERFACE to $INTERFACE ******$(tput sgr 0)"
 echo
 
+cat << EOF >> /etc/sysctl.conf
+net.ipv6.conf.all.disable_ipv6=1
+net.ipv6.conf.default.disable_ipv6=1
+net.ipv6.conf.lo.disable_ipv6=1
+net.ipv6.conf.eth0.disable_ipv6 = 1
+EOF
+
 iptables -t nat -A  POSTROUTING -o $ROUTEINTERFACE -j MASQUERADE
 
 sh -c "iptables-save > /etc/iptables.ipv4.nat"
