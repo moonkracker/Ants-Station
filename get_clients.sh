@@ -45,21 +45,21 @@ function formHostsForAnsible() {
     ip=($(getIPAddresses))
     hostname=($(getHostnames))
     total=${#hostname[*]}
-    echo "[ants]" > hosts
+    echo "[ants]" > /home/pi/Ants-Station/hosts
     for (( i=0; i<=$(( $total -1 )); i++ ))
     do
-	  echo ${hostname[$i]} "ansible_host="${ip[$i]} >> hosts
+	  echo ${hostname[$i]} "ansible_host="${ip[$i]} >> /home/pi/Ants-Station/hosts
     done   
 
-    echo "" >> hosts
-    echo "[ants:vars]" >> hosts
-    echo "ansible_user=pi" >> hosts
-    echo "ansible_password=raspberry" >> hosts
-    echo "ansible_python_interpreter=/usr/bin/python3" >> hosts
+    echo "" >> /home/pi/Ants-Station/hosts
+    echo "[ants:vars]" >> /home/pi/Ants-Station/hosts
+    echo "ansible_user=pi" >> /home/pi/Ants-Station/hosts
+    echo "ansible_password=raspberry" >> /home/pi/Ants-Station/hosts
+    echo "ansible_python_interpreter=/usr/bin/python3" >> /home/pi/Ants-Station/hosts
 }
 
 function runPlaybook() {
-    $(ansible-playbook -i hosts playbook.yaml)
+    $(ansible-playbook -i /home/pi/Ants-Station/hosts /home/pi/Ants-Station/playbook.yaml)
 }
 
 formHostsForAnsible
