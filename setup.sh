@@ -111,11 +111,11 @@ echo
 echo "$(tput setaf 1)****** Set add cron job ******$(tput sgr 0)"
 echo
 
+chmod +x /etc/rc.local
 chmod +x /home/pi/Ants-Station/get_clients.sh
 runuser -l pi -c '(crontab -l ; echo "*/10 * * * * /home/pi/Ants-Station/get_clients.sh") | sort - | uniq - | crontab - '
 
 echo
-echo "$(tput setaf 1)****** Reboot system in 5 seconds ******$(tput sgr 0)"
-read -p "****** Press ENTER to accept ******"
-sleep 5
+echo "$(tput setaf 1)****** Reboot system in 10 seconds ******$(tput sgr 0)"
+sleep 10
 reboot

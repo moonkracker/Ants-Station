@@ -17,3 +17,4 @@ PASS='antspasswd'
 
 #default hostname
 HOSTNAME='antscontroller'
+ANTNAME='ant'
