@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source "variables.sh"
+
 function hostIsReachable() {
     if ping -c 1 $1 &> /dev/null
     then
@@ -48,9 +50,17 @@ function formHostsForAnsible() {
     echo "[ants]" > /home/pi/Ants-Station/hosts
     for (( i=0; i<=$(( $total -1 )); i++ ))
     do
-	  echo ${hostname[$i]} "ansible_host="${ip[$i]} >> /home/pi/Ants-Station/hosts
+      if [[ ${hostname[$i]} == *$ANTNAME* ]]; then
+	    echo ${hostname[$i]} "ansible_host="${ip[$i]} >> /home/pi/Ants-Station/hosts
+      fi
     done   
-
+    echo "[dummy]" >> /home/pi/Ants-Station/hosts
+    for (( i=0; i<=$(( $total -1 )); i++ ))
+    do
+      if [[ ${hostname[$i]} != *$ANTNAME* ]]; then
+	    echo ${hostname[$i]} "ansible_host="${ip[$i]} >> /home/pi/Ants-Station/hosts
+      fi
+    done 
     echo "" >> /home/pi/Ants-Station/hosts
     echo "[ants:vars]" >> /home/pi/Ants-Station/hosts
     echo "ansible_user=pi" >> /home/pi/Ants-Station/hosts
@@ -59,7 +69,7 @@ function formHostsForAnsible() {
 }
 
 function runPlaybook() {
-    ansible-playbook -i /home/pi/Ants-Station/hosts /home/pi/Ants-Station/playbook.yaml
+    ansible-playbook -i /home/pi/Ants-Station/hosts /home/pi/Ants-Station/playbook.yaml --limit 'ants'
 }
 
 formHostsForAnsible
