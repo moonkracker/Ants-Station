@@ -27,8 +27,8 @@ rfkill unblock 0
 echo
 echo "$(tput setaf 2)****** Install all the required software ******$(tput sgr 0)"
 echo
-
-apt install dnsmasq hostapd sshpass ansible -y
+apt update
+apt install dnsmasq hostapd sshpass figlet ansible apache2 php libapache2-mod-php php-sqlite3 php-ssh2 -y
 
 echo
 echo "$(tput setaf 1)****** Stop hostapd and dnsmasq services ******$(tput sgr 0)"
@@ -119,6 +119,29 @@ echo
 echo "$(tput setaf 3)****** Change timezone to $TIMEZONE ******$(tput sgr 0)"
 echo
 sudo timedatectl set-timezone $TIMEZONE
+
+echo
+echo "$(tput setaf 5)****** Setup web dashboard ******$(tput sgr 0)"
+echo
+cd
+git clone https://github.com/WiringPi/WiringPi.git
+cd wiringPi
+sudo git pull origin
+./build
+cd /home/pi/Ants-Station
+sudo chmod 775 -R /var/www/html
+sudo service apache2 restart
+cp Dashboard/ /var/www/html/ants-station/
+sudo chmod 777 /var/www/html/ants-station/include/config.php
+
+echo
+echo "$(tput setaf 4)****** Change \"hello\" banner ******$(tput sgr 0)"
+echo
+cat /dev/null > /etc/motd
+rm -rf /etc/profile.d/
+mkdir /etc/profile.d
+mv startupinfo.sh /etc/profile.d/startupinfo.sh
+
 
 echo
 echo "$(tput setaf 1)****** Reboot system in 10 seconds ******$(tput sgr 0)"
