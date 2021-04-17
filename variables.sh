@@ -10,6 +10,7 @@ STARTIP='192.168.4.2'
 STOPIP='192.168.4.200'
 MASK='255.255.255.0'
 TIME='24h'
+TIMEZONE='Europe/Minsk'
 
 #wifi settings
 SSID='antNet'

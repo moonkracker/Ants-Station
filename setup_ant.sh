@@ -47,6 +47,11 @@ network={
 EOF
 
 echo
+echo "$(tput setaf 3)****** Change timezone to $TIMEZONE ******$(tput sgr 0)"
+echo
+sudo timedatectl set-timezone $TIMEZONE
+
+echo
 echo "$(tput setaf 1)****** Reboot system in 10 seconds ******$(tput sgr 0)"
 sleep 10
 reboot
