@@ -125,14 +125,14 @@ echo "$(tput setaf 5)****** Setup web dashboard ******$(tput sgr 0)"
 echo
 cd
 git clone https://github.com/WiringPi/WiringPi.git
-cd wiringPi
-sudo git pull origin
+cd WiringPi
+git pull origin
 ./build
 cd /home/pi/Ants-Station
-sudo chmod 775 -R /var/www/html
-sudo service apache2 restart
-cp Dashboard/ /var/www/html/ants-station/
-sudo chmod 777 /var/www/html/ants-station/include/config.php
+chmod 775 -R /var/www/html
+service apache2 restart
+cp -r Dashboard/ /var/www/html/ants-station/
+chmod 777 /var/www/html/ants-station/include/config.php
 
 echo
 echo "$(tput setaf 4)****** Change \"hello\" banner ******$(tput sgr 0)"

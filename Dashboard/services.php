@@ -33,7 +33,7 @@ $active_page = 'services';
 	<meta name="author" content="">
 	<link rel="shortcut icon" href="./static/images/raspberry.png" type="image/png" />
 	<link rel="icon" href="./static/images/raspberry.png" type="image/png" />
-	<title>GumCP Services</title>
+	<title>Ants-Station Services</title>
 	<link href="./static/css.php" rel="stylesheet" type="text/css">
 	<script src="./static/js.php" type="text/javascript">
 </script>
