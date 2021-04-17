@@ -26,6 +26,6 @@ if [ ! -z "${UsedRAMsize}" ]; then
 echo -ne "${LinesPrefix}${b}Memory usage:${n}\t${UsedRAMsize}%\t\t\t";
 fi;
 echo -e "${LinesPrefix}${b}System uptime:${n}\t${SystemUptime}";
-echo -e "Dashboard address:"
-echo -e "${LinesPrefix}${b}Eth0:${n}\thttp://${IP1}/ants-station/\t${LinesPrefix}${b}Wlan0:http://${IP2}/ants-station/\t\t$";
+echo -e "${LinesPrefix}${b}Dashboard address:"
+echo -e "${LinesPrefix}${b}Eth0:${n}\thttp://${IP1}/ants-station/\t${LinesPrefix}${b}Wlan0:http://${IP2}/ants-station/";
 
