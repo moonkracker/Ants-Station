@@ -124,5 +124,3 @@ A suggested _non-exhausitive_ list of things to investigate if ***pi-ap*** broke
 - ***cat /proc/sys/kernel/random/entropy_avail***: Use this command to investigate insufficient entropy errors when checking ***wpa_supplicant*** status
 
 - ***tail -fn 100 /var/log/syslog***: Review syslog for any interesting errors to investigate
-
-- **No Clashing Subnets**: Variable "***IPV4IPWLAN0***" in [***variables.sh***](https://github.com/moonkracker/Ants-Station/blob/main/variables.sh) is used to setup the AP interface & create IP pool to assign addresses to connecting clients. Ensure "***IPV4IPWLAN0***" does not clash with any existing subnets
