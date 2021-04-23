@@ -4,16 +4,6 @@ header("Content-type: text/javascript");
 header ("Cache-Control: max-age=" . $offset . ", must-revalidate");
 header ("Expires: " . gmdate ("D, d M Y H:i:s", time() + $offset) . " GMT");
 function compress($buffer) {
-	/* remove comments and empty lines */
-	//$buffer = preg_replace('!/\*.*?\*/!s', '', $buffer);
-	#$pattern = '/(?:(?:\/\*(?:[^*]|(?:\*+[^*\/]))*\*+\/)|(?:(?<!\:|\\\|\')\/\/.*))/';
-	#$buffer = preg_replace($pattern, '', $buffer);
-	//$buffer = preg_replace('/(?:(?:\/\*(?:[^*]|(?:\*+[^*\/]))*\*+\/)|(?:(?<!\:|\\\)\/\/[^"\'].*))/', '', $buffer);
-	//$buffer = preg_replace( "/(?:(?:\/\*(?:[^*]|(?:\*+[^*\/]))*\*+\/)|(?:(?<!\:)\/\/.*))/", "", $buffer ); //Yancharuk's code/regex
-	//$buffer = preg_replace("/\/\*[\s\S]*?\*\//", '', $buffer);
-
-	//$buffer = preg_replace('/\/\*[*.\S\s]+[^*\/]/s', '', $buffer);
-	
 	$replace = array(
     '#\'([^\n\']*?)/\*([^\n\']*)\'#' => "'\1/'+\'\'+'*\2'", // remove comments from ' strings
     '#\"([^\n\"]*?)/\*([^\n\"]*)\"#' => '"\1/"+\'\'+"*\2"', // remove comments from " strings
@@ -30,14 +20,9 @@ function compress($buffer) {
     '#/([\'"])\+\'\'\+([\'"])\*#' => "/*" // restore comments in strings
   );
 
-  #$search = array_keys( $replace );
-  #$buffer = preg_replace( $search, $replace, $buffer );
-	#$buffer = preg_replace("@/\*(.*?)\*/@s","\n",$buffer);
 	$buffer = preg_replace('(// .+)', '', $buffer);
 	$buffer = str_replace(array("//\r\n", "//\n", "\t"), '', $buffer);
 	$buffer = preg_replace('/\n\s*\n/', "\n", $buffer);
-	//$buffer = preg_replace('/\s+/', ' ', $buffer);
-	
 	return $buffer;
 }
 ob_start();

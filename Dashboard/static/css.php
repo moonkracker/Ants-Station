@@ -47,13 +47,7 @@ function compress($buffer) {
 	$buffer = str_replace(array('")','\')'), ')', $buffer);
 	$buffer = str_replace(array(', ',' ,'), ',', $buffer);
 	$buffer = str_replace(array('; ',' ;'), ';', $buffer);
-	
-	//$buffer = preg_replace("/url\((\"|'|)((.*\.(png|gif|jpg))(\"|'|))\)/Uie", "image_to_base64('$3','$4')", $buffer);
-	/*preg_match_all("/src=((\"|'|)?(.*\.(png|gif|jpg))(\"|'|))/Ui", $strHTML, $arrMatches);*/
-	/*preg_match_all("/background=((\"|'|)?(.*\.(png|gif|jpg))(\"|'|))/Ui", $strHTML, $arrMatches);*/
-	/*preg_match_all("/url\((\"|'|)?((.*\.(png|gif|jpg))(\"|'|))\)/Ui", $strHTML, $arrMatches);*/
-	#$css = preg_replace("/url\(\"|'|?(.*\.(png|gif|jpg)\"|'|\)/Ui", $strHTML, $arrMatches);
-	
+
 	return $buffer;
 }
 function image_to_base64($image_url,$image_type)

@@ -140,8 +140,7 @@ $memory_percentage = round(($memory_used) / $memory_total * 100);
                 return (b < 50 ? "#5cb85c" : b < 85 ? "#f0ad4e" : "#cb3935")
             },
             easing: 'easeOutBounce',
-            onStep: function(from, to, percent) {
-            },
+            onStep: function(from, to, percent) {},
             size: 160,
             scaleLength: 4,
             trackWidth: 8,
@@ -164,13 +163,12 @@ $memory_percentage = round(($memory_used) / $memory_total * 100);
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="./index.php"><img src="./static/images/raspberry.png" />GumCP</a>
+                    <a class="navbar-brand" href="./index.php"><img src="./static/images/raspberry.png" />Ants-Station
+                        Dashboard</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <?php
-include_once('./include/menu.php');
-?>
+                        <?php include_once('./include/menu.php');?>
                     </ul>
                 </div>
             </div>
@@ -308,6 +306,14 @@ include_once('./include/menu.php');
         <div id="active-users" class="panel panel-default" style="margin-bottom: 5px">
             <div class="panel-heading">
                 <h3 class="panel-title">Disks</h3>
+            </div>
+            <div class="panel-body">
+                <pre id="disks"><?php echo $disks; ?></pre>
+            </div>
+        </div>
+        <div id="active-users" class="panel panel-default" style="margin-bottom: 5px">
+            <div class="panel-heading">
+                <h3 class="panel-title">Wi-Fi users</h3>
             </div>
             <div class="panel-body">
                 <pre id="disks"><?php echo $disks; ?></pre>

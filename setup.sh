@@ -131,7 +131,7 @@ git pull origin
 cd /home/pi/Ants-Station
 chmod 775 -R /var/www/html
 service apache2 restart
-cp -r Dashboard/ /var/www/html/ants-station/
+cp -r Dashboard/ /var/www/html/ants-station
 chmod 777 /var/www/html/ants-station/include/config.php
 
 echo

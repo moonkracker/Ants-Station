@@ -198,7 +198,8 @@ $active_page = 'gpio';
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="./index.php"><img src="./static/images/raspberry.png" />GumCP</a>
+                    <a class="navbar-brand" href="./index.php"><img src="./static/images/raspberry.png" />Ants-Station
+                        Dashboard</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">

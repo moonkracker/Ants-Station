@@ -171,7 +171,8 @@ $active_page = 'buttons';
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="./index.php"><img src="./static/images/raspberry.png" />GumCP</a>
+                    <a class="navbar-brand" href="./index.php"><img src="./static/images/raspberry.png" />Ants-Station
+                        Dashboard</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -184,9 +185,6 @@ $active_page = 'buttons';
             </div>
             <!--/.container-fluid -->
         </nav>
-
-
-
         <button type="button" class="btn btn-default" onclick="javascript:add_button();"><i
                 class="fa fa-plus fa-lg"></i> Add a command button</button>
 
@@ -224,13 +222,8 @@ $active_page = 'buttons';
 										<li><a href="javascript:void(0);" onclick="javascript:delete_button(\''.$i.'\');">Delete</a></li>
 									</ul>
 								</div>';
-								
-								
-								
 								echo '</div> ';
 							}
-								
-							
 						}
 						?>
             </div>

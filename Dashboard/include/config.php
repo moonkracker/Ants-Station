@@ -89,8 +89,4 @@ if(LOGIN_REQUIRED==true)
 		exit();
 	}
 }
-
-
-
-
 ?>

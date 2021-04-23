@@ -41,8 +41,8 @@ $active_page = $_REQUEST['module'];
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="./index.php"><img src="./static/images/raspberry.png" />RasPi
-                        Ants-Station</a>
+                    <a class="navbar-brand" href="./index.php"><img src="./static/images/raspberry.png" />Ants-Station
+                        Dashboard</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">

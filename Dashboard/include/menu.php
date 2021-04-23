@@ -42,6 +42,4 @@ if(LOGIN_REQUIRED==true)
 {
 	echo '<li><a href="./logout.php">Logout</a></li>';
 }	
-
-
 ?>
