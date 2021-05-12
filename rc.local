@@ -18,4 +18,5 @@ if [ "$_IP" ]; then
 fi
 iptables-restore < /etc/iptables.ipv4.nat
 service procps reload
+export ANSIBLE_HOST_KEY_CHECKING=False
 exit 0
