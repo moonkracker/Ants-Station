@@ -1,4 +1,7 @@
 #### Ants-Station:	These scripts configure a Raspberry Pi into a dock station for ant-bots
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/21bf25f6f351431a929ecb8f0254e14e)](https://app.codacy.com/gh/moonkracker/Ants-Station?utm_source=github.com&utm_medium=referral&utm_content=moonkracker/Ants-Station&utm_campaign=Badge_Grade_Settings)
+
 #### Source:	https://github.com/moonkracker/Ants-Station
 
 \# License:	GPL 3.0
