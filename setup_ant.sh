@@ -34,7 +34,7 @@ raspi-config nonint do_hostname $ANTNAME-$PREFIX
 echo
 echo "$(tput setaf 3)****** Connect $ANTNAME-$PREFIX to wifi $SSID ******$(tput sgr 0)"
 echo
-cat << EOF > /etc/wpa_supplicant/wpa_supplicant.conf
+cat > /etc/wpa_supplicant/wpa_supplicant.conf <<EOF
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
 country=BY
