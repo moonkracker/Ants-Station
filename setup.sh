@@ -28,7 +28,7 @@ echo
 echo "$(tput setaf 2)****** Install all the required software ******$(tput sgr 0)"
 echo
 apt update
-apt install dnsmasq hostapd sshpass figlet ansible apache2 php libapache2-mod-php php-sqlite3 php-ssh2 -y
+apt install iptables dnsmasq hostapd sshpass figlet ansible apache2 php libapache2-mod-php php-sqlite3 php-ssh2 -y
 
 echo
 echo "$(tput setaf 1)****** Stop hostapd and dnsmasq services ******$(tput sgr 0)"
@@ -95,11 +95,16 @@ net.ipv6.conf.eth0.disable_ipv6=1
 EOF
 
 iptables -t nat -A  POSTROUTING -o $ROUTEINTERFACE -j MASQUERADE
+iptables -A FORWARD -i $ROUTEINTERFACE -o $INTERFACE -m state --state RELATED,ESTABLISHED -j ACCEPT
+iptables -A FORWARD -i $INTERFACE -o $ROUTEINTERFACE -j ACCEPT
 
 sh -c "iptables-save > /etc/iptables.ipv4.nat"
 
-mv /etc/rc.local /etc/rc.local.bak
-mv rc.local /etc/rc.local
+if [ -f "/etc/rc.local" ]; then
+    mv /etc/rc.local /etc/rc.local.bak
+fi
+
+cp rc.local /etc/rc.local
 
 PREFIX=$(randomiseStr 6)
 echo
@@ -126,7 +131,6 @@ echo
 cd
 git clone https://github.com/WiringPi/WiringPi.git
 cd WiringPi
-git pull origin
 ./build
 cd /home/pi/Ants-Station
 chmod 775 -R /var/www/html
@@ -140,7 +144,7 @@ echo
 cat /dev/null > /etc/motd
 rm -rf /etc/profile.d/
 mkdir /etc/profile.d
-mv startupinfo.sh /etc/profile.d/startupinfo.sh
+cp startupinfo.sh /etc/profile.d/startupinfo.sh
 
 
 echo
