@@ -46,6 +46,8 @@ $disks = shell_exec("df");
 
 $date = shell_exec("date");
 
+$wifiUsers = shell_exec("cat /var/lib/misc/dnsmasq.leases");
+
 //memory usage
 if(MEMORY_CALCULATION_METHOD==1)
 {
@@ -316,7 +318,7 @@ $memory_percentage = round(($memory_used) / $memory_total * 100);
                 <h3 class="panel-title">Wi-Fi users</h3>
             </div>
             <div class="panel-body">
-                <pre id="disks"><?php echo $disks; ?></pre>
+                <pre id="wifiUsers"><?php echo $wifiUsers; ?></pre>
             </div>
         </div>
     </div>
